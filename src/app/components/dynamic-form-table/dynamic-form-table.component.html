@@ -1,0 +1,48 @@
+<p>
+  dynamic-form-table works!
+</p>
+
+<div>
+  <form [formGroup]="rootForm">
+    <label>
+      Something :
+      <input type="text" formControlName="something">
+    </label>
+
+
+
+    <div formArrayName="tableRowData">
+      <table *ngFor="let row of rootForm.get('tableRowData').controls; let i=index">
+        <tr formGroupName="{{i}}">
+          <td>
+            <input formControlName="idtSequence">
+          </td>
+          <td>
+            <input formControlName="probUsed">
+          </td>
+          <td>
+            <input formControlName="idtName">
+          </td>
+          <td>
+            <input formControlName="variant">
+          </td>
+          <td>
+            <input formControlName="internalId">
+          </td>
+          <td>
+            <input formControlName="assignedNo">
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+
+
+  </form>
+
+</div>
+
+
+The resultant json looks like:
+{{rootForm.value | json}}
